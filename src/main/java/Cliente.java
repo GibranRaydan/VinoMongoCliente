@@ -67,12 +67,13 @@ public class Cliente {
                         
                         System.out.println("ingrese el contacto");
                         String contacto = lectura.next();
-                        paciente.setFecha(contacto);
+                        paciente.setContacto(contacto);
+                        
                         String input = mapper.writeValueAsString(paciente);
                         //Luego se utilizara Jackson
                         //String input = "{\"empNo\":\"E11\",\"empName\":\"" + nombre + "\",\"position\":\"Salesman\"}";
 
-                        response = webResource.type(MediaType.APPLICATION_JSON).put(ClientResponse.class, input);
+                        response = webResource.type(MediaType.APPLICATION_JSON).post(ClientResponse.class, input);
 
                         if (response.getStatus() != 200) {
                             System.out.println(response.toString());
