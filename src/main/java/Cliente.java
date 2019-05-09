@@ -21,14 +21,14 @@ public class Cliente {
             ClientResponse response = null;
             int opcion = -1;
             Scanner lectura = new Scanner(System.in);
-            System.out.println("Bienvenido sistema gestion de Pacientes");
+            System.out.println("Bienvenido sistema gestion de Mercancias Secas");
          
             do {
-                System.out.println("1. Listar 2. Crear.");
+                System.out.println("1. Listar 2. Crear. 3 Borrar TODO");
                 opcion = lectura.nextInt();
                 switch (opcion) {
                     case 1:
-                        webResource = client.resource("http://localhost:8080/myapp/pacientes/");
+                        webResource = client.resource("http://localhost:8080/myapp/mercancias/");
 
                         response = webResource.accept(MediaType.APPLICATION_JSON).get(ClientResponse.class);
 
@@ -44,30 +44,30 @@ public class Cliente {
 
                     case 2:
                         webResource = client
-                                .resource("http://localhost:8080/myapp/pacientes/");
+                                .resource("http://localhost:8080/myapp/mercancias/");
 
                         ObjectMapper mapper = new ObjectMapper();
-                        Paciente paciente = new Paciente();
+                        MercanciasSecas paciente = new MercanciasSecas();
                         
-                        System.out.println("Ingrese el nombre");
-                        String nombre = lectura.next();
-                        paciente.setNombre(nombre);
+                        System.out.println("Ingrese numero Serial");
+                        int serial = lectura.nextInt();
+                        paciente.setSerial(serial);
                         
-                        System.out.println("Ingrese la direccion");
-                        String codigo = lectura.next();
-                        paciente.setAddress(codigo);
+                        System.out.println("Ingrese numero lote");
+                        int lote = lectura.nextInt();
+                        paciente.setLote(lote);
                         
-                        System.out.println("ingrese el telefono");
-                        String posicion = lectura.next();
-                        paciente.setTelefono(posicion);
+                        System.out.println("ingrese el tipo de mercancia");
+                        String tipo = lectura.next();
+                        paciente.setTipo(tipo);
                         
-                        System.out.println("ingrese la fecha");
-                        String fecha = lectura.next();
-                        paciente.setFecha(fecha);
+                        System.out.println("ingrese la cantidad");
+                        int cantidad = lectura.nextInt();
+                        paciente.setCantidad(cantidad);
                         
-                        System.out.println("ingrese el contacto");
-                        String contacto = lectura.next();
-                        paciente.setContacto(contacto);
+                        System.out.println("ingrese el numero de serie");
+                        int serie = lectura.nextInt();
+                        paciente.setSerie(serie);
                         
                         String input = mapper.writeValueAsString(paciente);
                         //Luego se utilizara Jackson
@@ -86,13 +86,13 @@ public class Cliente {
                         break;
 
                     case 3:
-                        System.out.println("Indique el ID del empleado");
-                        String id = lectura.next();
-                        webResource = client.resource("http://localhost:8090/myApp/rest/employees/" + id);
+                        //System.out.println("Indique el ID del empleado");
+                        //String id = lectura.next();
+                        webResource = client.resource("http://localhost:8080/myapp/mercancias/" );//+ id);
 
                         response = webResource.accept(MediaType.APPLICATION_JSON).delete(ClientResponse.class);
 
-                        if (response.getStatus() != 204) {
+                        if (response.getStatus() != 200) {
                             throw new RuntimeException("Failed : HTTP error code : "
                                     + response.getStatus());
                         }
