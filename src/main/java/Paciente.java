@@ -13,6 +13,7 @@ public class Paciente {
     private String telefono;
     private String fecha;
     private String contacto;
+   
 /**
  *
  * @author white
@@ -20,14 +21,15 @@ public class Paciente {
 public Paciente() {
     
 }
- public Paciente (String nombre, String address, String telefono, String fecha, String contacto) {
+ public Paciente (String id,String nombre, String address, String telefono, String fecha, String contacto) {
         this.nombre = nombre;
         this.address = address;
         this.telefono = telefono;
         this.fecha = fecha;
         this.contacto = contacto;
+        
     }
-
+ 
     public String getNombre() {
         return nombre;
     }

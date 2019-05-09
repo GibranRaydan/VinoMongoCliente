@@ -1,0 +1,16 @@
+@startuml
+class Cliente
+class Paciente
+class com.fasterxml.jackson.databind.ObjectMapper
+class com.sun.jersey.api.client.Client
+class com.sun.jersey.api.client.ClientResponse
+class com.sun.jersey.api.client.WebResource
+class java.util.Scanner
+class javax.ws.rs.core.MediaType
+Cliente ..> com.fasterxml.jackson.databind.ObjectMapper
+Cliente ..> com.sun.jersey.api.client.Client
+Cliente ..> com.sun.jersey.api.client.ClientResponse
+Cliente ..> com.sun.jersey.api.client.WebResource
+Cliente ..> java.util.Scanner
+Cliente ..> javax.ws.rs.core.MediaType
+@enduml
